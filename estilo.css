@@ -975,6 +975,11 @@ body.a-abrir .hero-sombra,.hero.sombra .hero-sombra{opacity:0}
 .d60-3d-img.filme{margin:0;aspect-ratio:9/16}
 @media (max-width:900px){.d60-3d{grid-template-columns:1fr}.d60-3d-img.filme{width:min(78vw,360px);justify-self:center}}
 @media (max-width:900px){.d60-3d-img.filme{width:min(62vw,300px)}}
+/* 13/11: título grande ao lado do filme do configurador, na voz dos outros títulos (segunda linha em itálico) */
+.d60-3d-t{font-size:clamp(2.6rem,5.2vw,5.4rem);line-height:.98;letter-spacing:-.035em;margin-top:18px}
+.d60-3d-t .linha{display:block}
+.d60-3d-t em{font-style:italic;color:var(--espuma-2)}
+@media (max-width:900px){.d60-3d-t{font-size:clamp(2.3rem,10.5vw,2.9rem)}}
 
 /* css/50-premios.css */
 /* prémios: a sala de troféus, compacta. Os dois títulos europeus lado a lado numa faixa e as outras honras numa grelha densa, cada uma com o selo oficial numa placa clara, como numa vitrine. */
