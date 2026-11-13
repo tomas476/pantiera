@@ -521,6 +521,7 @@ body.a-abrir .hero-sombra,.hero.sombra .hero-sombra{opacity:0}
 @media (min-width:901px){.prancha{height:clamp(480px,40vw,640px)}}
 @media (max-width:900px){.prancha{aspect-ratio:auto;height:calc(47vw * 16 / 9 + 4vw)}.prancha-foto.filme{width:47vw;top:0}}
 .filme-som{top:10px;bottom:auto}
+@media (min-width:901px){.prancha-foto.filme{right:calc(var(--g) + 16vw)}}
 
 /* css/30-gama.css */
 /* gama à escala: o porto e a ficha em brochura */
