@@ -2199,3 +2199,5 @@ html.com-camada{overflow:hidden}
   .porta-mundo .porta-mapa{display:none}
   .porta-mundo .porta-acoes{margin-top:28px}
 }
+/* 13/11: no telemóvel a home não leva a porta dos dealers (título e botão); os dealers estão no menu */
+@media (max-width:900px){.porta-mundo{display:none}}
