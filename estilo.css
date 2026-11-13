@@ -1338,6 +1338,16 @@ html.dl-trava,html.dl-trava body{overflow:hidden}
 }
 html.sem-mov .dl-arco,html.sem-mov .dl-pin-casa::before{animation:none}
 html.sem-mov .dl-fluxo{display:none}
+/* 13/11: topo mais curto no computador. Título em duas linhas inteiras, texto à direita alinhado pela base, o mapa sobe para o primeiro ecrã */
+@media (min-width:901px){
+  .dl{padding-top:clamp(8px,2vh,20px)}
+  .dl-cabeca{grid-template-columns:minmax(0,1fr) minmax(240px,32ch);column-gap:clamp(32px,4vw,72px)}
+  .dl-cabeca .titulo-g{font-size:clamp(2.3rem,3.4vw,3.9rem);line-height:1;letter-spacing:-.03em}
+  .dl-cabeca .titulo-g .linha{display:block;white-space:nowrap}
+  .dl-sobre{margin-bottom:14px}
+  .dl-sub{padding-left:0;padding-bottom:.35em;max-width:32ch}
+}
+@media (min-width:901px){.dl-cabeca .dl-sub{align-self:end;padding-bottom:.4em}}
 
 /* css/70-proposta.css */
 /* «Agenda tu visita»: o fim da página, em claro. Três boias, com a placa do estaleiro a registar a escolha */
