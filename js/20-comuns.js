@@ -74,3 +74,9 @@
     }
   });
 })();
+// 13/11: filmes no site. Tocam sem som só enquanto estão à vista; o botão liga e desliga o som (e um toque no filme também).
+(()=>{const fs=document.querySelectorAll('[data-filme]');if(!fs.length)return;
+const io=new IntersectionObserver(es=>{for(const e of es){const v=e.target.querySelector('video');if(e.isIntersecting){if(v.preload!=='auto'){v.preload='auto'}v.play().catch(()=>{})}else{v.pause()}}},{threshold:0});
+fs.forEach(f=>{const v=f.querySelector('video'),b=f.querySelector('[data-filme-som]');io.observe(f);
+const troca=()=>{const on=v.muted;fs.forEach(o=>{if(o!==f){const ov=o.querySelector('video');ov.muted=true;o.querySelector('[data-filme-som]').setAttribute('aria-pressed','false')}});v.muted=!on;if(on){v.currentTime=0;v.play().catch(()=>{})}b.setAttribute('aria-pressed',String(on));b.setAttribute('aria-label',on?'Silenciar':'Activar sonido')};
+b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();troca()});v.addEventListener('click',troca)})})();
