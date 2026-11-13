@@ -1784,8 +1784,7 @@ html.sem-mov .dl-fluxo{display:none}
 .mp-tanques{display:grid;gap:26px;margin-top:40px}
 .mp-tanque-t{display:flex;align-items:baseline;gap:10px;margin:0}
 .mp-tanque-t>span{font-size:.8125rem;color:var(--nevoa)}
-.mp-tanque-t small{font-size:.75rem;letter-spacing:.04em;color:var(--nevoa);font-variant-numeric:tabular-nums}
-.mp-tanque-t small::before{content:"";display:inline-block;width:14px;height:1px;margin:0 8px 0 0;vertical-align:middle;background:var(--mp-cota)}
+.mp-tanque-t small{padding-left:10px;border-left:1px solid var(--mp-linha);font-size:.75rem;letter-spacing:.04em;color:var(--nevoa);font-variant-numeric:tabular-nums}
 /* a barra à escala do maior tanque, com o valor logo no fim dela */
 .mp-tanque-f{display:flex;align-items:center;gap:14px;margin:10px 0 0}
 .mp-tanque-f b{flex:none;font-weight:400;white-space:nowrap}
@@ -1865,7 +1864,7 @@ html.sem-mov .dl-fluxo{display:none}
 .mp-oficial p{margin:0;max-width:40ch;font-size:.9375rem;color:var(--espuma)}
 .mp-vistas{position:absolute;left:50%;top:12px;z-index:2;transform:translateX(-50%);display:none;gap:2px;padding:3px;border-radius:999px;background:rgba(11,12,13,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .mp-visor.pronto .mp-vistas{display:flex}
-.mp-vistas button{min-height:38px;padding:0 11px;border:0;border-radius:999px;background:none;font:inherit;font-size:.8125rem;font-weight:500;color:var(--espuma-2);cursor:pointer;white-space:nowrap;transition:background var(--t-toque) var(--curva),color var(--t-toque) var(--curva)}
+.mp-vistas button{min-height:44px;padding:0 11px;border:0;border-radius:999px;background:none;font:inherit;font-size:.8125rem;font-weight:500;color:var(--espuma-2);cursor:pointer;white-space:nowrap;transition:background var(--t-toque) var(--curva),color var(--t-toque) var(--curva)}
 .mp-vistas button.activo{background:var(--espuma);color:var(--tinta)}
 @media (max-width:380px){.mp-vistas button{padding:0 8px}}
 
@@ -1878,7 +1877,10 @@ html.sem-mov .dl-fluxo{display:none}
 .mp-entrada-cta{justify-content:center;min-height:54px;font-size:var(--f-c)}
 
 /* aberto: o palco passa a visor 3D e fica preso no topo do ecrã enquanto se escolhem as opções */
-.mp-construir.aberto .mp-palco{aspect-ratio:auto;height:var(--palco-h);position:sticky;top:var(--mp-topo);z-index:5;box-shadow:0 calc(var(--mp-topo) * -1) 0 0 var(--mar)}
+/* no telemóvel o palco prende-se ao topo com uma faixa da cor do fundo por baixo do cabeçalho: nada corre à vista por cima do barco */
+.mp-construir.aberto .mp-c-corpo{margin-top:0}
+.mp-construir.aberto .mp-palco{aspect-ratio:auto;height:calc(var(--palco-h) + var(--mp-topo));position:sticky;top:0;z-index:5;background:linear-gradient(var(--mar),var(--mar)) top/100% var(--mp-topo) no-repeat,radial-gradient(120% 80% at 50% 60%,#3b4047 0%,#1d2024 44%,#101214 76%,#0b0c0d 100%)}
+.mp-construir.aberto .mp-visor,.mp-construir.aberto .mp-palco-poster{top:var(--mp-topo);height:auto}
 .mp-construir.aberto .mp-palco-abre,.mp-construir.aberto .mp-entrada{display:none}
 .mp-construir.aberto .mp-visor{display:block}
 .mp-construir.aberto .mp-palco-poster{filter:brightness(.38) blur(2px)}
@@ -2000,7 +2002,9 @@ body.mp-sem-barra .barra-contacto{opacity:0!important;pointer-events:none!import
   .mp-palco{margin-inline:0;border-radius:20px}
   .mp-entrada{align-content:center;gap:24px}
   .mp-entrada-cta{justify-self:start;padding:0 1.8em}
-  .mp-construir.aberto .mp-c-corpo{align-items:start}
+  .mp-construir.aberto .mp-c-corpo{align-items:start;margin-top:48px}
+  .mp-construir.aberto .mp-palco{top:var(--mp-topo);height:var(--palco-h);background:radial-gradient(120% 80% at 50% 40%,#3b4047 0%,#1d2024 44%,#101214 76%,#0b0c0d 100%)}
+  .mp-construir.aberto .mp-visor,.mp-construir.aberto .mp-palco-poster{top:0}
   .mp-construir.aberto{--palco-h:clamp(520px,calc(100vh - 140px),760px)}
   .mp-abas{margin:0 0 14px;padding:4px;border:1px solid rgba(244,244,242,.24);border-radius:999px;position:static}
   .mp-painel{align-content:start}
@@ -2011,6 +2015,9 @@ body.mp-sem-barra .barra-contacto{opacity:0!important;pointer-events:none!import
   .mp-cota-l,.mp-ga .mp-cota-l,.mp-tanque-b,.mp-escala-l,.mp-pino::before,.mp-pino::after{transform:none!important;transition:none}
   .mp-mini,.mp-grupo.activo{animation:none}
 }
+/* o foco (teclado) nunca deixa uma opção escondida por baixo do visor e dos separadores presos */
+.mp-construir.aberto .mp-grupo :is(button,input){scroll-margin-top:calc(var(--mp-topo) + var(--palco-h) + 72px);scroll-margin-bottom:24px}
+@media (min-width:900px){.mp-construir.aberto .mp-grupo :is(button,input){scroll-margin-top:var(--mp-topo)}}
 
 /* css/90-rodape.css */
 /* rodapé compacto: contacto e redes numa linha; por baixo, o logótipo pequeno, o legal e o interruptor de movimento.

@@ -149,7 +149,11 @@
   new IntersectionObserver(([e]) => { corpoVisto = e.isIntersecting; semBarra(); }, { threshold: 0 }).observe($('.mp-c-corpo', sec));
 
   // abre sozinho: #construir, o configurador sozinho (camada da home) ou uma escolha vinda no endereço
-  if (/^#construir$/i.test(window.MP_HASH || '') || pedidoUrl.get('so') === 'construir' || ['casco', 'motor', 'teca', 'pack', 'vista'].some((k) => pedidoUrl.has(k))) abrir(false);
+  if (/^#construir$/i.test(window.MP_HASH || '') || pedidoUrl.get('so') === 'construir' || ['casco', 'motor', 'teca', 'pack', 'vista'].some((k) => pedidoUrl.has(k))) {
+    abrir(false);
+    // quem chega já a pedir o configurador não espera por um toque: o 3D carrega depois da página
+    if (document.readyState === 'complete') setTimeout(marca, 400); else addEventListener('load', () => setTimeout(marca, 400), { once: true });
+  }
   // na camada por cima da home, o pedido sai da camada
   if (pedidoUrl.get('so') === 'construir' && cta) cta.target = '_top';
 
