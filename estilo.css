@@ -520,6 +520,7 @@ body.a-abrir .hero-sombra,.hero.sombra .hero-sombra{opacity:0}
 .prancha-foto.filme{aspect-ratio:9/16;width:clamp(240px,22vw,340px)}
 @media (min-width:901px){.prancha{height:clamp(480px,40vw,640px)}}
 @media (max-width:900px){.prancha{aspect-ratio:auto;height:calc(47vw * 16 / 9 + 4vw)}.prancha-foto.filme{width:47vw;top:0}}
+.filme-som{top:10px;bottom:auto}
 
 /* css/30-gama.css */
 /* gama à escala: o porto e a ficha em brochura */
@@ -972,6 +973,7 @@ body.a-abrir .hero-sombra,.hero.sombra .hero-sombra{opacity:0}
 .d60-3d{grid-template-columns:clamp(260px,24vw,380px) minmax(0,1fr);align-items:center}
 .d60-3d-img.filme{margin:0;aspect-ratio:9/16}
 @media (max-width:900px){.d60-3d{grid-template-columns:1fr}.d60-3d-img.filme{width:min(78vw,360px);justify-self:center}}
+@media (max-width:900px){.d60-3d-img.filme{width:min(62vw,300px)}}
 
 /* css/50-premios.css */
 /* prémios: a sala de troféus, compacta. Os dois títulos europeus lado a lado numa faixa e as outras honras numa grelha densa, cada uma com o selo oficial numa placa clara, como numa vitrine. */
